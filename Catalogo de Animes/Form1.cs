@@ -1,19 +1,12 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using System.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static Catalogo_de_Animes.Form1;
-using System.Collections.Generic;
 
 namespace Catalogo_de_Animes
 {
     public partial class Form1 : Form
     {
-        private List<Anime> Animes;
-
         public Form1()
         {
             InitializeComponent();
