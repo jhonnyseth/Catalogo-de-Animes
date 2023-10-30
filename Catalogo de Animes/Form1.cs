@@ -1,12 +1,19 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static Catalogo_de_Animes.Form1;
+using System.Collections.Generic;
 
 namespace Catalogo_de_Animes
 {
     public partial class Form1 : Form
     {
+        private List<Anime> Animes;
+
         public Form1()
         {
             InitializeComponent();
@@ -177,6 +184,35 @@ namespace Catalogo_de_Animes
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public class Anime
+        {
+            public string ID { get; set; }
+            public string AnimeName { get; set; }
+            public string Genero { get; set; }
+            public string Episodio { get; set; }
+
+            public Anime(string id, string animeName, string genero, string episodio)
+            {
+                ID = id;
+                AnimeName = animeName;
+                Genero = genero;
+                Episodio = episodio;
+            }
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dataGridView1.SelectedRows[0];
+
+                txtId.Text = row.Cells["Id"].Value.ToString();
+                txtanime.Text = row.Cells["Anime"].Value.ToString();
+                boxgenero.Text = row.Cells["Genero"].Value.ToString();
+                txtepisodio.Text = row.Cells["Episodio"].Value.ToString();
+            }
         }
     }
 }
