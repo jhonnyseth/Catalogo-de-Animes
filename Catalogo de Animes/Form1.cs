@@ -40,18 +40,6 @@ namespace Catalogo_de_Animes
             }
         }
 
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void btndelete_Click(object sender, EventArgs e)
         {
             try
@@ -93,7 +81,6 @@ namespace Catalogo_de_Animes
             }
         }
 
- 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             try
@@ -144,6 +131,23 @@ namespace Catalogo_de_Animes
             }
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dataGridView1.SelectedRows[0];
+
+                txtId.Text = row.Cells["Id"].Value.ToString();
+                txtanime.Text = row.Cells["Anime"].Value.ToString();
+                boxgenero.Text = row.Cells["Genero"].Value.ToString();
+                txtepisodio.Text = row.Cells["Episodio"].Value.ToString();
+            }
+        }
         private void AtualizarDataGridView()
         {
             try
@@ -169,16 +173,6 @@ namespace Catalogo_de_Animes
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         public class Anime
         {
             public string ID { get; set; }
@@ -192,19 +186,6 @@ namespace Catalogo_de_Animes
                 AnimeName = animeName;
                 Genero = genero;
                 Episodio = episodio;
-            }
-        }
-
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                DataGridViewRow row = dataGridView1.SelectedRows[0];
-
-                txtId.Text = row.Cells["Id"].Value.ToString();
-                txtanime.Text = row.Cells["Anime"].Value.ToString();
-                boxgenero.Text = row.Cells["Genero"].Value.ToString();
-                txtepisodio.Text = row.Cells["Episodio"].Value.ToString();
             }
         }
     }
